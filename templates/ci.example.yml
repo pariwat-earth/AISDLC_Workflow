@@ -1,0 +1,45 @@
+# Example CI for a Node.js project on GitHub Actions. Copy to .github/workflows/ci.yml
+# in the project repo and adapt the commands to the project's stack and scripts.
+# Changing this file later needs the human's approval (process/security.md section 3).
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  # Runs on every push. Needs no database, so it also fits the light pipeline level.
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the secret scan reads the whole history
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - run: npm audit --omit=dev --audit-level=high
+
+  # Full level: the whole suite against a database that exists only for this run.
+  # Runs on pull requests so frequent pushes do not use up CI minutes.
+  tests:
+    if: github.event_name == 'pull_request'
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Start the project's database here (a service container or a local emulator),
+      # apply every migration from zero, then seed test data.
+      - run: npm test
