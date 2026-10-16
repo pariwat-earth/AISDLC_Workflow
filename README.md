@@ -8,7 +8,7 @@ The rules the AI follows are in [`CLAUDE.md`](CLAUDE.md), which Claude Code load
 
 **Requires**: [Claude Code](https://claude.com/claude-code) and Node.js. The framework relies on Claude Code's skills, hooks, and `CLAUDE.md` loading.
 
-**Status**: version 3.0. Used so far to build and run one production system. Treat it as a working method that is still being proven, and adapt it.
+**Status**: version 3.1. Used so far to build and run one production system. Treat it as a working method that is still being proven, and adapt it.
 
 ## Idea
 

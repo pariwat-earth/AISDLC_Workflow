@@ -1,6 +1,6 @@
 # Installing the pipeline skills
 
-Version: **1.2** · 2026-10-09 · Status: active
+Version: **1.3** · 2026-10-16 · Status: active
 
 Read this file when a skill listed in CLAUDE.md section 7 is missing from `.claude/skills/` or fails to load. Installed skills are listed in `skills-lock.json`.
 
@@ -35,7 +35,11 @@ Every install command asks the human for permission before it runs; wait for con
    npx skills@latest add petrkindlmann/qa-skills/skills/accessibility-testing
    npx skills@latest add petrkindlmann/qa-skills/skills/release-readiness
    ```
-5. Report briefly which were newly installed and which were already present.
+5. humanizer — if missing:
+   ```
+   npx skills@latest add blader/humanizer
+   ```
+6. Report briefly which were newly installed and which were already present.
 
 ## 2. When a skill fails to load
 
@@ -62,6 +66,7 @@ Read its SKILL.md first. If it is a stub pointing at another skill, check that t
 | `ai-test-generation` | petrkindlmann/qa-skills | Coverage matrix and assertions; fewer missed edge cases |
 | `accessibility-testing` | petrkindlmann/qa-skills | axe-core and keyboard checks (NFR N11) |
 | `release-readiness` | petrkindlmann/qa-skills | Go/no-go checklist, smoke test, rollback — staged rollout and canary only when the system is large enough to need them |
+| `humanizer` | [blader/humanizer](https://github.com/blader/humanizer) | Removes AI-sounding patterns from text people read (staged contrasts, filler closers, inflated words), keeping the meaning |
 | `/code-review`, `/simplify`, `/security-review` | Built into Claude Code | Nothing to install — bugs in the diff · less duplicated code · security of the changed code |
 
 qa-skills has 50 skills; install only the ones used: `npx skills@latest add petrkindlmann/qa-skills/skills/<name>`

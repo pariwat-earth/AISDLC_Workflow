@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1 — 2026-10-16
+
+- New skill `humanizer` (blader/humanizer) for text people read: on-screen wording, user guides, marketing copy, pull request descriptions. Section 7 and `SETUP.md`.
+
 ## 3.0 — 2026-10-09
 
 First release as a framework.

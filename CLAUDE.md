@@ -1,6 +1,6 @@
 # AISDLC — AI software development lifecycle, human-approved
 
-Version: **3.0** · 2026-10-09 · Status: active · Changes: [`CHANGELOG.md`](CHANGELOG.md)
+Version: **3.1** · 2026-10-16 · Status: active · Changes: [`CHANGELOG.md`](CHANGELOG.md)
 
 > Section numbers 0–8 and stage numbers 1–9 are referenced from project documents and skills. Keep them when editing this file.
 
@@ -156,6 +156,7 @@ Grilling uses **section 3.1**, not a skill. Why each skill was chosen and how to
 - **Stage 6 QA round 3**: `/security-review` (N4) · `accessibility-testing` (N11)
 - **Stage 6 all rounds**: `diagnosing-bugs` on every issue before its third attempt · `triage` * for the issue lifecycle
 - **Stages 7–8**: `release-readiness` — go/no-go checklist, smoke test, rollback
+- **Text people read** (on-screen wording, user guides, marketing copy, pull request descriptions): `humanizer` — keep quoted on-screen labels and legal terms exactly as written
 - **Editing this framework or a skill**: `writing-for-agents`
 
 \* The AI cannot invoke these. At the point of use, tell the human to type `/skill-name`. If they do not, do that work yourself per section 3.
